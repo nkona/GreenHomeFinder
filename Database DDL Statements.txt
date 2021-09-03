@@ -1,0 +1,10 @@
+CREATE TABLE County(state_fips INT, county_fips INT, state_name VARCHAR(20), county_name VARCHAR(40), 
+PRIMARY KEY(state_fips, county_fips));
+
+CREATE TABLE Weather(state_fips INT, county_fips INT, year INT, month INT, precipitation DECIMAL(5,2), temperature DECIMAL(5,2),
+PRIMARY KEY(state_fips, county_fips, year, month));
+
+CREATE TABLE HomeValue(year INT, month INT,home_value INT, region_id INT, state_fips INT, county_fips INT,
+PRIMARY KEY (year, month, region_id));
+
+CREATE TABLE AirQuality(state_fips INT, county_fips INT, date VARCHAR(20), aqi INT, category VARCHAR(40), parameter VARCHAR(30), PRIMARY KEY(state_fips, county_fips, date));

@@ -1,0 +1,38 @@
+
+```{r}
+
+library("readxl")
+weather_data1 <- read_xlsx("C:\\Users\\nikhi\\Downloads\\Precipitation Data.xlsx")
+weather_data2 <- read_xlsx("C:\\Users\\nikhi\\Downloads\\Temperature Data.xlsx")
+
+library(tidyr)
+
+# Merge each month's precipitation data into a separate row within one column
+weather_data1 <- gather(weather_data1, Month, Element_Value, -State_Fips, -County_Fips, -Element_Type, -Year)
+
+# Reorder columns to desired order within mySQL database
+weather_data1 <- weather_data1[c(1,2,4,5,3,6)]
+
+# Define month column as a number rather than character
+weather_data1$Month <- as.numeric(as.character(weather_data1$Month))
+
+# Merge each month's temperature data into a separate row within one column
+weather_data2 <- gather(weather_data2, Month, Element_Value, -State_Fips, -County_Fips, -Element_Type, -Year)
+
+# Reorder columns to desired order within mySQL database
+weather_data2 <- weather_data2[c(1,2,4,5,3,6)]
+
+# Define month column as a number rather than character
+weather_data2$Month <- as.numeric(as.character(weather_data2$Month))
+
+# Remove columns with missing values (all months yet to be recorded in 2020)
+weather_data1 <- na.omit(weather_data1)
+weather_data2 <- na.omit(weather_data2)
+
+# Rename and restructure columns
+names(weather_data1)[6] <- "Precipitation"
+weather_data1$Temperature <- weather_data2$Element_Value
+weather_data1$Element_Type <- NULL
+
+write.csv(weather_data1,"C:\\Users\\nikhi\\Downloads\\Weather_Data.csv", row.names = FALSE)
+```
