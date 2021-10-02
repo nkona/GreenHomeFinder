@@ -2,7 +2,7 @@
 
 Our project’s goal is to help people who are looking to relocate decide which counties they may want to move to by providing them with a general idea of the climate and air quality of each US county in addition to typical home values. The app allows users to search for specific counties they are interested in and provide them with graphic representations of data from our housing, weather, and air quality datasets. 
 
-Additionally, users can filter for counties based on user specified parameters on price, weather, and air quality in order to narrow down potential regions of interest by their needs and desires. They can also create their own adjusted cost of living that applies cost penalties to counties outside their weather and air quality preferences. 
+Additionally, users can filter for counties based on user specified parameters on price, weather, and air quality in order to narrow down potential regions of interest by their needs and desires. They can also create their own adjusted cost of living that applies cost penalties to counties outside their weather and air quality preferences. Note that the SQL databases have been taken offline, so functionality is incomplete.
 
 ### Backend
 1. `cd` into `/backend`
